@@ -17,97 +17,122 @@ st.set_page_config(
     initial_sidebar_state="expanded"
 )
 
-# Colorful app styling
+
+# =========================================================
+# CUTE PASTEL DESIGN 🌷
+# =========================================================
+
 st.markdown(
     """
     <style>
     .stApp {
-        background: linear-gradient(135deg, #f5f7ff 0%, #fff7fb 50%, #f2fffc 100%);
+        background: linear-gradient(135deg, #fff5f8 0%, #f8f3ff 55%, #fff8ed 100%);
     }
 
     [data-testid="stSidebar"] {
-        background: linear-gradient(180deg, #25145b 0%, #492b91 55%, #7148b8 100%);
+        background: linear-gradient(180deg, #f7c8d8 0%, #e4d5ff 55%, #d9f3ed 100%);
     }
 
     [data-testid="stSidebar"] * {
-        color: white !important;
+        color: #573d62 !important;
     }
 
     [data-testid="stSidebar"] [data-baseweb="select"] * {
-        color: #222222 !important;
+        color: #3d2b42 !important;
     }
 
     [data-testid="stSidebar"] input {
-        color: #222222 !important;
+        color: #3d2b42 !important;
     }
 
-    .hero {
-        padding: 28px 30px;
-        border-radius: 22px;
-        background: linear-gradient(110deg, #41228e, #8b3dba, #ed5b9f);
-        color: white;
-        margin-bottom: 20px;
-        box-shadow: 0 8px 24px rgba(65, 34, 142, 0.18);
+    .cute-hero {
+        background: linear-gradient(120deg, #e9b8cc, #cbb8f0, #b7e5dc);
+        border-radius: 28px;
+        padding: 30px;
+        margin-bottom: 24px;
+        box-shadow: 0 10px 28px rgba(140, 100, 150, 0.16);
+        border: 1px solid rgba(255,255,255,0.8);
     }
 
-    .hero h1 {
-        color: white;
-        margin: 0;
+    .cute-hero h1 {
+        color: #4b315a;
         font-size: 2.5rem;
-    }
-
-    .hero p {
-        color: #f6edff;
-        margin: 8px 0 0 0;
-        font-size: 1.05rem;
-    }
-
-    .section-title {
-        color: #41228e;
+        margin: 0;
         font-weight: 800;
-        font-size: 1.45rem;
-        margin-top: 12px;
-        margin-bottom: 10px;
+    }
+
+    .cute-hero p {
+        color: #624d70;
+        font-size: 1.05rem;
+        margin: 10px 0 0 0;
+    }
+
+    .cute-pill {
+        display: inline-block;
+        background: rgba(255,255,255,0.65);
+        color: #684b79;
+        border-radius: 30px;
+        padding: 7px 14px;
+        font-size: 0.85rem;
+        font-weight: 700;
+        margin-bottom: 12px;
     }
 
     div[data-testid="stMetric"] {
-        background: linear-gradient(135deg, #ffffff, #f2ecff);
-        border: 1px solid #e5d8ff;
-        padding: 18px 18px;
-        border-radius: 18px;
-        box-shadow: 0 5px 15px rgba(65, 34, 142, 0.08);
+        background: rgba(255, 255, 255, 0.88);
+        border: 1px solid #f0d9e8;
+        border-radius: 22px;
+        padding: 18px;
+        box-shadow: 0 6px 18px rgba(150, 110, 150, 0.10);
     }
 
     div[data-testid="stMetric"] label {
-        color: #6040a0 !important;
+        color: #9a6b91 !important;
         font-weight: 700;
     }
 
     div[data-testid="stMetric"] [data-testid="stMetricValue"] {
-        color: #2f176d !important;
+        color: #6f4b86 !important;
         font-weight: 800;
     }
 
     div.stButton > button,
     div.stDownloadButton > button {
-        border-radius: 12px;
-        border: 0;
+        background: linear-gradient(90deg, #dca6c1, #b8a4e0);
         color: white;
-        background: linear-gradient(90deg, #6741d9, #df4fa2);
+        border: none;
+        border-radius: 16px;
         font-weight: 700;
+        padding: 10px 16px;
+        box-shadow: 0 4px 12px rgba(150, 110, 170, 0.16);
+        transition: 0.2s ease;
     }
 
     div.stButton > button:hover,
     div.stDownloadButton > button:hover {
+        background: linear-gradient(90deg, #c98db0, #a38bd4);
         color: white;
-        border: 1px solid #ffffff;
-        background: linear-gradient(90deg, #df4fa2, #6741d9);
+        transform: translateY(-2px);
+    }
+
+    [data-testid="stSelectbox"] > label,
+    [data-testid="stSlider"] > label,
+    [data-testid="stTextInput"] > label {
+        color: #704e7e !important;
+        font-weight: 700;
     }
 
     h2, h3 {
-        color: #41228e;
+        color: #77558d;
     }
 
+    [data-testid="stPlotlyChart"] {
+        background: rgba(255, 255, 255, 0.75);
+        border: 1px solid #f1dce9;
+        border-radius: 22px;
+        padding: 8px;
+        box-shadow: 0 5px 18px rgba(150, 110, 150, 0.08);
+    }
     </style>
     """,
     unsafe_allow_html=True
@@ -120,9 +145,13 @@ st.markdown(
 
 st.markdown(
     """
-    <div class="hero">
+    <div class="cute-hero">
+        <div class="cute-pill">✨ YOUR LITTLE AIRBNB CORNER ✨</div>
         <h1>🏡 Airbnb Explorer</h1>
-        <p>Discover listings, compare prices, explore reviews, and uncover insights — all in one interactive dashboard ✨</p>
+        <p>
+            A cozy place to explore stays, discover lovely neighbourhoods,
+            compare prices, and find your next favourite spot. 🌷
+        </p>
     </div>
     """,
     unsafe_allow_html=True
@@ -147,19 +176,7 @@ def load_data(file_bytes):
     rename_map = {
         "name": "listing_name",
         "neighborhood": "neighbourhood",
-        "neighborhood_group": "neighbourhood_group",
-        "host_identity_verified": "host_identity_verified",
-        "number_of_reviews": "number_of_reviews",
-        "reviews_per_month": "reviews_per_month",
-        "review_rate_number": "review_rate_number",
-        "availability_365": "availability_365",
-        "calculated_host_listings_count": "calculated_host_listings_count",
-        "minimum_nights": "minimum_nights",
-        "service_fee": "service_fee",
-        "last_review": "last_review",
-        "room_type": "room_type",
-        "host_id": "host_id",
-        "price": "price"
+        "neighborhood_group": "neighbourhood_group"
     }
 
     df = df.rename(columns=rename_map)
@@ -189,7 +206,6 @@ def load_data(file_bytes):
             )
             df[col] = pd.to_numeric(df[col], errors="coerce")
 
-    # Convert review date if available
     if "last_review" in df.columns:
         df["last_review"] = pd.to_datetime(
             df["last_review"], errors="coerce"
@@ -223,14 +239,14 @@ if df.empty:
 # SIDEBAR FILTERS
 # =========================================================
 
-st.sidebar.markdown("## 🎛️ Dashboard Controls")
-st.sidebar.caption("Use these dropdowns to explore a specific group of listings.")
+st.sidebar.markdown("## 🎛️ Your Dashboard Controls")
+st.sidebar.caption("Choose filters below to explore your favourite listings.")
 
 filtered_df = df.copy()
 
 
 def dropdown_filter(data, column, label):
-    """Add a dropdown filter when the requested column exists."""
+    """Create a dropdown filter if the column exists."""
     if column not in data.columns:
         return data
 
@@ -292,19 +308,15 @@ if "price" in filtered_df.columns and filtered_df["price"].notna().any():
             filtered_df["price"].between(price_range[0], price_range[1])
         ]
 
-# Reset filters
-if st.sidebar.button("🔄 Reset All Filters", use_container_width=True):
-    st.rerun()
-
 st.sidebar.markdown("---")
-st.sidebar.caption("💜 Explore. Compare. Discover.")
+st.sidebar.caption("💗 Explore. Compare. Discover.")
 
 
 # =========================================================
-# KPI CARDS
+# OVERVIEW METRICS
 # =========================================================
 
-st.markdown('<div class="section-title">📌 Dashboard Overview</div>', unsafe_allow_html=True)
+st.markdown("## 📌 Your Airbnb Overview")
 
 kpi1, kpi2, kpi3, kpi4 = st.columns(4)
 
@@ -329,7 +341,10 @@ if "number_of_reviews" in filtered_df.columns:
 else:
     kpi3.metric("⭐ Total Reviews", "N/A")
 
-if "availability_365" in filtered_df.columns and filtered_df["availability_365"].notna().any():
+if (
+    "availability_365" in filtered_df.columns
+    and filtered_df["availability_365"].notna().any()
+):
     kpi4.metric(
         "📅 Avg. Availability",
         f"{filtered_df['availability_365'].mean():.1f} days"
@@ -339,24 +354,24 @@ else:
 
 
 # =========================================================
-# ANALYSIS SELECTOR
+# ANALYSIS DROPDOWN
 # =========================================================
 
 st.markdown("---")
 
 analysis = st.selectbox(
-    "🧭 Choose an Analysis",
+    "🌸 Where would you like to explore?",
     [
         "🌍 Location Insights",
-        "💸 Pricing Insights",
-        "👤 Host Insights",
+        "💗 Pricing Insights",
+        "🧸 Host Insights",
         "⭐ Reviews Insights",
-        "📅 Availability Insights",
-        "📋 Explore Dataset"
+        "🌿 Availability Insights",
+        "📖 Explore Dataset"
     ]
 )
 
-st.markdown(f'<div class="section-title">{analysis}</div>', unsafe_allow_html=True)
+st.markdown(f"## {analysis}")
 
 
 # =========================================================
@@ -437,7 +452,7 @@ if analysis == "🌍 Location Insights":
 # PRICING ANALYSIS
 # =========================================================
 
-elif analysis == "💸 Pricing Insights":
+elif analysis == "💗 Pricing Insights":
 
     if "price" not in filtered_df.columns:
         st.warning("This dataset does not contain a price column.")
@@ -451,7 +466,7 @@ elif analysis == "💸 Pricing Insights":
                 price_data,
                 x="price",
                 nbins=40,
-                color_discrete_sequence=["#8B5CF6"],
+                color_discrete_sequence=["#DDA6C7"],
                 title="💰 Price Distribution"
             )
             st.plotly_chart(fig, use_container_width=True)
@@ -500,7 +515,7 @@ elif analysis == "💸 Pricing Insights":
 # HOST ANALYSIS
 # =========================================================
 
-elif analysis == "👤 Host Insights":
+elif analysis == "🧸 Host Insights":
 
     left, right = st.columns(2)
 
@@ -585,7 +600,7 @@ elif analysis == "⭐ Reviews Insights":
                 review_data,
                 x="number_of_reviews",
                 nbins=40,
-                color_discrete_sequence=["#EC4899"],
+                color_discrete_sequence=["#EC9FC0"],
                 title="💬 Distribution of Reviews"
             )
             st.plotly_chart(fig, use_container_width=True)
@@ -632,7 +647,7 @@ elif analysis == "⭐ Reviews Insights":
             orientation="h",
             color="Total Reviews",
             color_continuous_scale="Teal",
-            title="🔥 Top 15 Neighbourhoods by Total Reviews"
+            title="💬 Top 15 Neighbourhoods by Total Reviews"
         )
         fig.update_layout(yaxis={"categoryorder": "total ascending"})
         st.plotly_chart(fig, use_container_width=True)
@@ -642,7 +657,7 @@ elif analysis == "⭐ Reviews Insights":
 # AVAILABILITY ANALYSIS
 # =========================================================
 
-elif analysis == "📅 Availability Insights":
+elif analysis == "🌿 Availability Insights":
 
     if "availability_365" not in filtered_df.columns:
         st.warning("This dataset does not contain an availability column.")
@@ -656,7 +671,7 @@ elif analysis == "📅 Availability Insights":
                 availability_data,
                 x="availability_365",
                 nbins=30,
-                color_discrete_sequence=["#14B8A6"],
+                color_discrete_sequence=["#9AD9CC"],
                 title="📅 Availability Distribution"
             )
             st.plotly_chart(fig, use_container_width=True)
@@ -685,13 +700,13 @@ elif analysis == "📅 Availability Insights":
 # DATASET EXPLORER
 # =========================================================
 
-elif analysis == "📋 Explore Dataset":
+elif analysis == "📖 Explore Dataset":
 
-    st.markdown("### 🔍 Search and explore the filtered listings")
+    st.markdown("### 🔍 Search and explore filtered listings")
 
     search_text = st.text_input(
-        "Search listing name, neighbourhood, room type, or host",
-        placeholder="Type a word to search..."
+        "Search listing, neighbourhood, room type, or host",
+        placeholder="Type something to search..."
     )
 
     display_df = filtered_df.copy()
@@ -744,10 +759,11 @@ elif analysis == "📋 Explore Dataset":
 # =========================================================
 
 st.markdown("---")
+
 st.markdown(
     """
-    <div style="text-align:center; color:#7656a8; padding:10px;">
-        Made with 💜 using Streamlit and Plotly | Airbnb Explorer 🏡
+    <div style="text-align:center; color:#9a7ba8; padding:12px;">
+        Made with 💗 Streamlit and Plotly | Your Airbnb Explorer 🏡🌷
     </div>
     """,
     unsafe_allow_html=True
