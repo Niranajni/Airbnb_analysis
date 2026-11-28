@@ -7,132 +7,128 @@ import streamlit as st
 
 
 # =========================================================
-# PAGE SETUP
+# PAGE CONFIGURATION
 # =========================================================
 
 st.set_page_config(
-    page_title="Airbnb Explorer",
-    page_icon="🏡",
+    page_title="Airbnb Business Intelligence",
+    page_icon="🏢",
     layout="wide",
     initial_sidebar_state="expanded"
 )
 
 
 # =========================================================
-# CUTE PASTEL DESIGN 🌷
+# PROFESSIONAL THEME
 # =========================================================
 
 st.markdown(
     """
     <style>
+    :root {
+        --navy: #14243A;
+        --blue: #1F4E79;
+        --teal: #0F9D9A;
+        --light-bg: #F4F7FB;
+        --text: #25364A;
+    }
+
     .stApp {
-        background: linear-gradient(135deg, #fff5f8 0%, #f8f3ff 55%, #fff8ed 100%);
+        background: #F4F7FB;
+        color: #25364A;
     }
 
     [data-testid="stSidebar"] {
-        background: linear-gradient(180deg, #f7c8d8 0%, #e4d5ff 55%, #d9f3ed 100%);
+        background: #14243A;
     }
 
     [data-testid="stSidebar"] * {
-        color: #573d62 !important;
+        color: #F5F8FC !important;
     }
 
     [data-testid="stSidebar"] [data-baseweb="select"] * {
-        color: #3d2b42 !important;
+        color: #25364A !important;
     }
 
     [data-testid="stSidebar"] input {
-        color: #3d2b42 !important;
+        color: #25364A !important;
     }
 
-    .cute-hero {
-        background: linear-gradient(120deg, #e9b8cc, #cbb8f0, #b7e5dc);
-        border-radius: 28px;
-        padding: 30px;
-        margin-bottom: 24px;
-        box-shadow: 0 10px 28px rgba(140, 100, 150, 0.16);
-        border: 1px solid rgba(255,255,255,0.8);
+    .dashboard-header {
+        background: linear-gradient(110deg, #14243A 0%, #1F4E79 65%, #0F9D9A 100%);
+        padding: 28px 32px;
+        border-radius: 16px;
+        margin-bottom: 22px;
+        color: white;
+        box-shadow: 0 6px 18px rgba(20, 36, 58, 0.12);
     }
 
-    .cute-hero h1 {
-        color: #4b315a;
-        font-size: 2.5rem;
+    .dashboard-header h1 {
+        color: white;
+        font-size: 2rem;
+        font-weight: 750;
         margin: 0;
-        font-weight: 800;
     }
 
-    .cute-hero p {
-        color: #624d70;
-        font-size: 1.05rem;
-        margin: 10px 0 0 0;
+    .dashboard-header p {
+        color: #DCE8F3;
+        margin: 8px 0 0 0;
+        font-size: 1rem;
     }
 
-    .cute-pill {
-        display: inline-block;
-        background: rgba(255,255,255,0.65);
-        color: #684b79;
-        border-radius: 30px;
-        padding: 7px 14px;
-        font-size: 0.85rem;
-        font-weight: 700;
-        margin-bottom: 12px;
+    .section-heading {
+        color: #14243A;
+        font-size: 1.25rem;
+        font-weight: 750;
+        margin: 8px 0 12px 0;
     }
 
     div[data-testid="stMetric"] {
-        background: rgba(255, 255, 255, 0.88);
-        border: 1px solid #f0d9e8;
-        border-radius: 22px;
-        padding: 18px;
-        box-shadow: 0 6px 18px rgba(150, 110, 150, 0.10);
+        background: white;
+        border: 1px solid #E1E8F0;
+        border-radius: 14px;
+        padding: 18px 20px;
+        box-shadow: 0 3px 12px rgba(20, 36, 58, 0.05);
     }
 
     div[data-testid="stMetric"] label {
-        color: #9a6b91 !important;
-        font-weight: 700;
+        color: #60758A !important;
+        font-weight: 600;
     }
 
     div[data-testid="stMetric"] [data-testid="stMetricValue"] {
-        color: #6f4b86 !important;
-        font-weight: 800;
+        color: #14243A !important;
+        font-weight: 750;
     }
 
     div.stButton > button,
     div.stDownloadButton > button {
-        background: linear-gradient(90deg, #dca6c1, #b8a4e0);
+        background: #1F4E79;
         color: white;
-        border: none;
-        border-radius: 16px;
-        font-weight: 700;
-        padding: 10px 16px;
-        box-shadow: 0 4px 12px rgba(150, 110, 170, 0.16);
-        transition: 0.2s ease;
+        border: 1px solid #1F4E79;
+        border-radius: 9px;
+        font-weight: 650;
     }
 
     div.stButton > button:hover,
     div.stDownloadButton > button:hover {
-        background: linear-gradient(90deg, #c98db0, #a38bd4);
+        background: #0F9D9A;
+        border-color: #0F9D9A;
         color: white;
-        transform: translateY(-2px);
-    }
-
-    [data-testid="stSelectbox"] > label,
-    [data-testid="stSlider"] > label,
-    [data-testid="stTextInput"] > label {
-        color: #704e7e !important;
-        font-weight: 700;
-    }
-
-    h2, h3 {
-        color: #77558d;
     }
 
     [data-testid="stPlotlyChart"] {
-        background: rgba(255, 255, 255, 0.75);
-        border: 1px solid #f1dce9;
-        border-radius: 22px;
+        background: white;
+        border: 1px solid #E1E8F0;
+        border-radius: 14px;
         padding: 8px;
-        box-shadow: 0 5px 18px rgba(150, 110, 150, 0.08);
+        box-shadow: 0 3px 12px rgba(20, 36, 58, 0.04);
     }
+
+    h2, h3 {
+        color: #14243A;
+    }
+
     </style>
     """,
     unsafe_allow_html=True
@@ -145,13 +141,9 @@ st.markdown(
 
 st.markdown(
     """
-    <div class="cute-hero">
-        <div class="cute-pill">✨ YOUR LITTLE AIRBNB CORNER ✨</div>
-        <h1>🏡 Airbnb Explorer</h1>
-        <p>
-            A cozy place to explore stays, discover lovely neighbourhoods,
-            compare prices, and find your next favourite spot. 🌷
-        </p>
+    <div class="dashboard-header">
+        <h1>Airbnb Business Intelligence</h1>
+        <p>Listing performance, pricing, host activity, and guest engagement</p>
     </div>
     """,
     unsafe_allow_html=True
@@ -159,7 +151,7 @@ st.markdown(
 
 
 # =========================================================
-# DATA LOADING
+# DATA LOADING AND CLEANING
 # =========================================================
 
 @st.cache_data
@@ -172,16 +164,15 @@ def load_data(file_bytes):
         for col in df.columns
     ]
 
-    # Handle common column-name variations
+    # Standardize common spelling variations
     rename_map = {
         "name": "listing_name",
         "neighborhood": "neighbourhood",
         "neighborhood_group": "neighbourhood_group"
     }
-
     df = df.rename(columns=rename_map)
 
-    # Clean numeric columns
+    # Clean numeric fields
     numeric_columns = [
         "price",
         "service_fee",
@@ -215,13 +206,13 @@ def load_data(file_bytes):
 
 
 uploaded_file = st.file_uploader(
-    "📂 Upload your Airbnb CSV file",
+    "Upload Airbnb CSV dataset",
     type=["csv"],
-    help="Choose your Airbnb dataset CSV file."
+    help="Select your Airbnb Open Data CSV file."
 )
 
 if uploaded_file is None:
-    st.info("👆 Upload your Airbnb CSV file to open the dashboard.")
+    st.info("Upload your Airbnb CSV file to view the dashboard.")
     st.stop()
 
 try:
@@ -231,7 +222,7 @@ except Exception as error:
     st.stop()
 
 if df.empty:
-    st.error("The uploaded file is empty.")
+    st.error("The uploaded dataset is empty.")
     st.stop()
 
 
@@ -239,14 +230,13 @@ if df.empty:
 # SIDEBAR FILTERS
 # =========================================================
 
-st.sidebar.markdown("## 🎛️ Your Dashboard Controls")
-st.sidebar.caption("Choose filters below to explore your favourite listings.")
+st.sidebar.title("Dashboard Filters")
+st.sidebar.caption("Choose values to update the dashboard.")
 
 filtered_df = df.copy()
 
 
 def dropdown_filter(data, column, label):
-    """Create a dropdown filter if the column exists."""
     if column not in data.columns:
         return data
 
@@ -272,33 +262,32 @@ def dropdown_filter(data, column, label):
 
 
 filtered_df = dropdown_filter(
-    filtered_df, "neighbourhood_group", "📍 Neighbourhood Group"
+    filtered_df, "neighbourhood_group", "Neighbourhood Group"
 )
 
 filtered_df = dropdown_filter(
-    filtered_df, "neighbourhood", "🏙️ Neighbourhood"
+    filtered_df, "neighbourhood", "Neighbourhood"
 )
 
 filtered_df = dropdown_filter(
-    filtered_df, "room_type", "🛏️ Room Type"
+    filtered_df, "room_type", "Room Type"
 )
 
 filtered_df = dropdown_filter(
-    filtered_df, "host_identity_verified", "🪪 Host Verified"
+    filtered_df, "host_identity_verified", "Host Verification"
 )
 
 filtered_df = dropdown_filter(
-    filtered_df, "instant_bookable", "⚡ Instant Bookable"
+    filtered_df, "instant_bookable", "Instant Bookable"
 )
 
-# Price range filter
 if "price" in filtered_df.columns and filtered_df["price"].notna().any():
     min_price = float(filtered_df["price"].min())
     max_price = float(filtered_df["price"].max())
 
     if min_price < max_price:
         price_range = st.sidebar.slider(
-            "💰 Price Range",
+            "Price Range",
             min_value=min_price,
             max_value=max_price,
             value=(min_price, max_price)
@@ -309,80 +298,86 @@ if "price" in filtered_df.columns and filtered_df["price"].notna().any():
         ]
 
 st.sidebar.markdown("---")
-st.sidebar.caption("💗 Explore. Compare. Discover.")
+st.sidebar.caption(f"Listings in current view: {len(filtered_df):,}")
 
 
 # =========================================================
-# OVERVIEW METRICS
+# KPI METRICS
 # =========================================================
 
-st.markdown("## 📌 Your Airbnb Overview")
+st.markdown(
+    '<div class="section-heading">Executive Overview</div>',
+    unsafe_allow_html=True
+)
 
-kpi1, kpi2, kpi3, kpi4 = st.columns(4)
+metric1, metric2, metric3, metric4 = st.columns(4)
 
-kpi1.metric(
-    "🏠 Total Listings",
+metric1.metric(
+    "Total Listings",
     f"{len(filtered_df):,}"
 )
 
 if "price" in filtered_df.columns and filtered_df["price"].notna().any():
-    kpi2.metric(
-        "💰 Average Price",
+    metric2.metric(
+        "Average Price",
         f"${filtered_df['price'].mean():,.0f}"
     )
 else:
-    kpi2.metric("💰 Average Price", "N/A")
+    metric2.metric("Average Price", "N/A")
 
 if "number_of_reviews" in filtered_df.columns:
-    kpi3.metric(
-        "⭐ Total Reviews",
+    metric3.metric(
+        "Total Reviews",
         f"{filtered_df['number_of_reviews'].sum():,.0f}"
     )
 else:
-    kpi3.metric("⭐ Total Reviews", "N/A")
+    metric3.metric("Total Reviews", "N/A")
 
 if (
     "availability_365" in filtered_df.columns
     and filtered_df["availability_365"].notna().any()
 ):
-    kpi4.metric(
-        "📅 Avg. Availability",
+    metric4.metric(
+        "Average Availability",
         f"{filtered_df['availability_365'].mean():.1f} days"
     )
 else:
-    kpi4.metric("📅 Avg. Availability", "N/A")
+    metric4.metric("Average Availability", "N/A")
 
 
 # =========================================================
-# ANALYSIS DROPDOWN
+# ANALYSIS SELECTOR
 # =========================================================
 
 st.markdown("---")
 
 analysis = st.selectbox(
-    "🌸 Where would you like to explore?",
+    "Select Analysis",
     [
-        "🌍 Location Insights",
-        "💗 Pricing Insights",
-        "🧸 Host Insights",
-        "⭐ Reviews Insights",
-        "🌿 Availability Insights",
-        "📖 Explore Dataset"
+        "Location Analysis",
+        "Pricing Analysis",
+        "Host Analysis",
+        "Review Analysis",
+        "Availability Analysis",
+        "Dataset Explorer"
     ]
 )
 
-st.markdown(f"## {analysis}")
+st.markdown(
+    f'<div class="section-heading">{analysis}</div>',
+    unsafe_allow_html=True
+)
 
 
 # =========================================================
 # LOCATION ANALYSIS
 # =========================================================
 
-if analysis == "🌍 Location Insights":
+if analysis == "Location Analysis":
 
-    left, right = st.columns(2)
+    col1, col2 = st.columns(2)
 
-    with left:
+    with col1:
         if "neighbourhood" in filtered_df.columns:
             location_counts = (
                 filtered_df["neighbourhood"]
@@ -400,13 +395,13 @@ if analysis == "🌍 Location Insights":
                 y="Neighbourhood",
                 orientation="h",
                 color="Listings",
-                color_continuous_scale="Purples",
-                title="🏙️ Top 15 Neighbourhoods by Listings"
+                color_continuous_scale="Teal",
+                title="Top Neighbourhoods by Listing Count"
             )
             fig.update_layout(yaxis={"categoryorder": "total ascending"})
             st.plotly_chart(fig, use_container_width=True)
 
-    with right:
+    with col2:
         if "room_type" in filtered_df.columns:
             room_counts = (
                 filtered_df["room_type"]
@@ -422,28 +417,28 @@ if analysis == "🌍 Location Insights":
                 names="Room Type",
                 values="Listings",
                 hole=0.45,
-                color_discrete_sequence=px.colors.qualitative.Pastel,
-                title="🛏️ Listings by Room Type"
+                color_discrete_sequence=px.colors.qualitative.Set2,
+                title="Listing Share by Room Type"
             )
             st.plotly_chart(fig, use_container_width=True)
 
     if "neighbourhood_group" in filtered_df.columns:
-        city_counts = (
+        group_counts = (
             filtered_df["neighbourhood_group"]
             .dropna()
             .astype(str)
             .value_counts()
             .reset_index()
         )
-        city_counts.columns = ["Neighbourhood Group", "Listings"]
+        group_counts.columns = ["Neighbourhood Group", "Listings"]
 
         fig = px.bar(
-            city_counts,
+            group_counts,
             x="Neighbourhood Group",
             y="Listings",
             color="Listings",
-            color_continuous_scale="Sunset",
-            title="📍 Listings by Neighbourhood Group"
+            color_continuous_scale="Blues",
+            title="Listings by Neighbourhood Group"
         )
         st.plotly_chart(fig, use_container_width=True)
 
@@ -452,26 +447,26 @@ if analysis == "🌍 Location Insights":
 # PRICING ANALYSIS
 # =========================================================
 
-elif analysis == "💗 Pricing Insights":
+elif analysis == "Pricing Analysis":
 
     if "price" not in filtered_df.columns:
-        st.warning("This dataset does not contain a price column.")
+        st.warning("The uploaded dataset does not contain a price column.")
     else:
-        left, right = st.columns(2)
+        col1, col2 = st.columns(2)
 
-        with left:
+        with col1:
             price_data = filtered_df.dropna(subset=["price"])
 
             fig = px.histogram(
                 price_data,
                 x="price",
                 nbins=40,
-                color_discrete_sequence=["#DDA6C7"],
-                title="💰 Price Distribution"
+                color_discrete_sequence=["#0F9D9A"],
+                title="Listing Price Distribution"
             )
             st.plotly_chart(fig, use_container_width=True)
 
-        with right:
+        with col2:
             if "room_type" in filtered_df.columns:
                 room_price = (
                     filtered_df.groupby("room_type", dropna=True)["price"]
@@ -487,26 +482,26 @@ elif analysis == "💗 Pricing Insights":
                     y="Average Price",
                     color="Average Price",
                     color_continuous_scale="Teal",
-                    title="🛏️ Average Price by Room Type"
+                    title="Average Price by Room Type"
                 )
                 st.plotly_chart(fig, use_container_width=True)
 
         if "neighbourhood_group" in filtered_df.columns:
-            area_price = (
+            group_price = (
                 filtered_df.groupby("neighbourhood_group", dropna=True)["price"]
                 .mean()
                 .reset_index()
                 .sort_values("price", ascending=False)
             )
-            area_price.columns = ["Neighbourhood Group", "Average Price"]
+            group_price.columns = ["Neighbourhood Group", "Average Price"]
 
             fig = px.bar(
-                area_price,
+                group_price,
                 x="Neighbourhood Group",
                 y="Average Price",
                 color="Average Price",
-                color_continuous_scale="Plasma",
-                title="📍 Average Price by Neighbourhood Group"
+                color_continuous_scale="Blues",
+                title="Average Price by Neighbourhood Group"
             )
             st.plotly_chart(fig, use_container_width=True)
 
@@ -515,11 +510,11 @@ elif analysis == "💗 Pricing Insights":
 # HOST ANALYSIS
 # =========================================================
 
-elif analysis == "🧸 Host Insights":
+elif analysis == "Host Analysis":
 
-    left, right = st.columns(2)
+    col1, col2 = st.columns(2)
 
-    with left:
+    with col1:
         if "host_id" in filtered_df.columns:
             host_counts = (
                 filtered_df.groupby("host_id")
@@ -534,13 +529,13 @@ elif analysis == "🧸 Host Insights":
                 x="host_id",
                 y="Listings",
                 color="Listings",
-                color_continuous_scale="Bluered",
-                title="🏆 Top 10 Hosts by Listings"
+                color_continuous_scale="Blues",
+                title="Top 10 Hosts by Listing Count"
             )
             fig.update_layout(xaxis_title="Host ID")
             st.plotly_chart(fig, use_container_width=True)
 
-    with right:
+    with col2:
         if (
             "host_identity_verified" in filtered_df.columns
             and "price" in filtered_df.columns
@@ -557,8 +552,8 @@ elif analysis == "🧸 Host Insights":
                 x="Host Verified",
                 y="Average Price",
                 color="Average Price",
-                color_continuous_scale="Viridis",
-                title="🪪 Average Price by Host Verification"
+                color_continuous_scale="Teal",
+                title="Average Price by Host Verification"
             )
             st.plotly_chart(fig, use_container_width=True)
 
@@ -578,21 +573,21 @@ elif analysis == "🧸 Host Insights":
             x="Host Verified",
             y="Average Reviews",
             color="Average Reviews",
-            color_continuous_scale="Sunset",
-            title="⭐ Average Reviews by Host Verification"
+            color_continuous_scale="Blues",
+            title="Average Reviews by Host Verification"
         )
         st.plotly_chart(fig, use_container_width=True)
 
 
 # =========================================================
-# REVIEWS ANALYSIS
+# REVIEW ANALYSIS
 # =========================================================
 
-elif analysis == "⭐ Reviews Insights":
+elif analysis == "Review Analysis":
 
-    left, right = st.columns(2)
+    col1, col2 = st.columns(2)
 
-    with left:
+    with col1:
         if "number_of_reviews" in filtered_df.columns:
             review_data = filtered_df.dropna(subset=["number_of_reviews"])
 
@@ -600,12 +595,12 @@ elif analysis == "⭐ Reviews Insights":
                 review_data,
                 x="number_of_reviews",
                 nbins=40,
-                color_discrete_sequence=["#EC9FC0"],
-                title="💬 Distribution of Reviews"
+                color_discrete_sequence=["#1F4E79"],
+                title="Distribution of Review Counts"
             )
             st.plotly_chart(fig, use_container_width=True)
 
-    with right:
+    with col2:
         if (
             "room_type" in filtered_df.columns
             and "number_of_reviews" in filtered_df.columns
@@ -622,8 +617,8 @@ elif analysis == "⭐ Reviews Insights":
                 x="Room Type",
                 y="Average Reviews",
                 color="Average Reviews",
-                color_continuous_scale="Magenta",
-                title="🛏️ Average Reviews by Room Type"
+                color_continuous_scale="Teal",
+                title="Average Reviews by Room Type"
             )
             st.plotly_chart(fig, use_container_width=True)
 
@@ -646,8 +641,8 @@ elif analysis == "⭐ Reviews Insights":
             y="Neighbourhood",
             orientation="h",
             color="Total Reviews",
-            color_continuous_scale="Teal",
-            title="💬 Top 15 Neighbourhoods by Total Reviews"
+            color_continuous_scale="Blues",
+            title="Neighbourhoods with the Most Reviews"
         )
         fig.update_layout(yaxis={"categoryorder": "total ascending"})
         st.plotly_chart(fig, use_container_width=True)
@@ -657,26 +652,26 @@ elif analysis == "⭐ Reviews Insights":
 # AVAILABILITY ANALYSIS
 # =========================================================
 
-elif analysis == "🌿 Availability Insights":
+elif analysis == "Availability Analysis":
 
     if "availability_365" not in filtered_df.columns:
-        st.warning("This dataset does not contain an availability column.")
+        st.warning("The uploaded dataset does not contain an availability column.")
     else:
-        left, right = st.columns(2)
+        col1, col2 = st.columns(2)
 
-        with left:
+        with col1:
             availability_data = filtered_df.dropna(subset=["availability_365"])
 
             fig = px.histogram(
                 availability_data,
                 x="availability_365",
                 nbins=30,
-                color_discrete_sequence=["#9AD9CC"],
-                title="📅 Availability Distribution"
+                color_discrete_sequence=["#0F9D9A"],
+                title="Availability Distribution"
             )
             st.plotly_chart(fig, use_container_width=True)
 
-        with right:
+        with col2:
             if "room_type" in filtered_df.columns:
                 room_availability = (
                     filtered_df.groupby("room_type", dropna=True)["availability_365"]
@@ -690,8 +685,8 @@ elif analysis == "🌿 Availability Insights":
                     x="Room Type",
                     y="Average Availability",
                     color="Average Availability",
-                    color_continuous_scale="Viridis",
-                    title="🛏️ Average Availability by Room Type"
+                    color_continuous_scale="Teal",
+                    title="Average Availability by Room Type"
                 )
                 st.plotly_chart(fig, use_container_width=True)
 
@@ -700,13 +695,13 @@ elif analysis == "🌿 Availability Insights":
 # DATASET EXPLORER
 # =========================================================
 
-elif analysis == "📖 Explore Dataset":
+elif analysis == "Dataset Explorer":
 
-    st.markdown("### 🔍 Search and explore filtered listings")
+    st.markdown("### Search and inspect filtered listings")
 
     search_text = st.text_input(
-        "Search listing, neighbourhood, room type, or host",
-        placeholder="Type something to search..."
+        "Search listings",
+        placeholder="Search by listing name, neighbourhood, room type, or host"
     )
 
     display_df = filtered_df.copy()
@@ -735,7 +730,7 @@ elif analysis == "📖 Explore Dataset":
 
             display_df = display_df[search_mask]
 
-    st.caption(f"Showing {len(display_df):,} rows")
+    st.caption(f"Records displayed: {len(display_df):,}")
 
     st.dataframe(
         display_df,
@@ -746,7 +741,7 @@ elif analysis == "📖 Explore Dataset":
     csv_data = display_df.to_csv(index=False).encode("utf-8")
 
     st.download_button(
-        "📥 Download Filtered Data as CSV",
+        "Download Filtered Data as CSV",
         data=csv_data,
         file_name="filtered_airbnb_data.csv",
         mime="text/csv",
@@ -760,11 +755,6 @@ elif analysis == "📖 Explore Dataset":
 
 st.markdown("---")
 
-st.markdown(
-    """
-    <div style="text-align:center; color:#9a7ba8; padding:12px;">
-        Made with 💗 Streamlit and Plotly | Your Airbnb Explorer 🏡🌷
-    </div>
-    """,
-    unsafe_allow_html=True
+st.caption(
+    "Airbnb Business Intelligence Dashboard | Built with Streamlit and Plotly"
 )
